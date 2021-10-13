@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  redis:
+    image: redis
+    networks: 
+      - webnet
+  web:
+    container_name: testApp_container
+    image: test
+    ports:
+      - 5059:5059
+    networks: ['webnet']
+networks: 
+  webnet:
