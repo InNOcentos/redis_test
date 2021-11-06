@@ -5,10 +5,10 @@ services:
     networks: 
       - webnet
   web:
-    container_name: testApp_container
-    image: test
+    container_name: app_container
+    image: test:1
     ports:
-      - 5059:5059
+      - 5000:5000
     networks: ['webnet']
 networks: 
   webnet:
