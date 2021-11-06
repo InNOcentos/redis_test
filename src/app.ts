@@ -1,12 +1,7 @@
 import express from 'express'
+import { strategies } from './constants'
 const redis = require('async-redis')
-import RoundRobin from './strategy/round-robin'
- 
-class RoundBobin {
-    getNextPhone (task_id: number) {
-        return task_id
-    }
-}
+import s from './strategy'
 
 const client = redis.createClient(6379, 'redis')
 
@@ -21,9 +16,9 @@ app.use(express.json())
 app.post('/', async (req,res)=> {
     console.log(req.body)
     const {strategy, task_id} = req.body
-    const classes = [RoundBobin, RoundRobin]
+    if (!strategies[strategy as keyof typeof strategies]) res.send('false')
 
-    const ins = new classes[strategy]()
+    const ins = s.getInstance(strategy).getNextPhone(1)
 
     console.log(ins)
 

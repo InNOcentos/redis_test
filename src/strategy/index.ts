@@ -2,12 +2,12 @@ import { strategies } from '../constants'
 import RoundRobin from './round-robin'
 
 class strategy {
-    strategies = {
+    private static strategies = {
         RoundRobin: RoundRobin
     }
 
-    getInstance() {
-        return this
+    public static getInstance(strategy: keyof typeof strategies): any {
+        return this.strategies[strategy]
     }
 }
 
