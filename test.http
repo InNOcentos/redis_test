@@ -1,0 +1,33 @@
+POST http://localhost:5000/save HTTP/1.1
+content-type: application/json
+
+{
+    "task_id": 3,
+    "strategy": "RoundRobin"
+}
+###
+POST http://localhost:5000/check HTTP/1.1
+content-type: application/json
+
+{
+    "task_id": 3,
+    "strategy": "RoundRobin"
+}
+###
+
+GET http://localhost:5000/3 HTTP/1.1
+###
+POST http://localhost:5000/status HTTP/1.1
+content-type: application/json
+
+{
+    "p1": 12332453425,
+    "p2": 1324235445435,
+    "time": "gdfkgjfdkhd",
+    "code": 404,
+    "id": 20
+}
+###
+
+GET http://localhost:5000/status/20 HTTP/1.1
+
